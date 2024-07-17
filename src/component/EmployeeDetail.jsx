@@ -7,8 +7,7 @@ import img_icon from "./img_icon.png";
 const EmployeeDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { id, employee_name, employee_age, employee_salary, profile_image } =
-    location.state;
+  const { id, employee_name, employee_age, employee_salary } = location.state;
 
   return (
     <div className="employee-detail-container">
