@@ -1,43 +1,21 @@
 // src/components/Dashboard.js
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
+import { EmployeeContext } from "./EmployeeContext";
 import EmployeeCard from "./EmployeeCard";
 import Search from "./Search";
 import Header from "./Header";
+import "../App.css";
 
 const Dashboard = () => {
-  const [employees, setEmployees] = useState([]);
-  const [filteredEmployees, setFilteredEmployees] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://dummy.restapiexample.com/api/v1/employees")
-      .then((response) => {
-        if (response.status === 200) {
-          setEmployees(response.data.data);
-          setFilteredEmployees(response.data.data);
-        }
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
-  const handleSearch = (id) => {
-    const filtered = employees.filter(
-      (employee) => employee.id === parseInt(id)
-    );
-    setFilteredEmployees(filtered);
-  };
-
-  const handleDelete = (id) => {
-    setFilteredEmployees(
-      filteredEmployees.filter((employee) => employee.id !== id)
-    );
-  };
+  const { filteredEmployees, handleSearch, handleDelete } =
+    useContext(EmployeeContext);
 
   return (
-    <div>
+    <div className="dashboard-home">
       <Header />
-      <Search onSearch={handleSearch} />
+      <div className="search-btn-position">
+        <Search onSearch={handleSearch} />
+      </div>
       <div className="employee-cards">
         {filteredEmployees.map((employee) => (
           <EmployeeCard

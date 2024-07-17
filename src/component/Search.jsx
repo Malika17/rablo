@@ -1,5 +1,6 @@
 // src/components/SearchBar.js
 import React, { useState } from "react";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 const Search = ({ onSearch }) => {
   const [searchId, setSearchId] = useState("");
@@ -9,14 +10,19 @@ const Search = ({ onSearch }) => {
   };
 
   return (
-    <div>
+    <div className="search-btn">
       <input
+        className="search-input"
         type="text"
         value={searchId}
         onChange={(e) => setSearchId(e.target.value)}
         placeholder="Search by ID"
       />
-      <button onClick={handleSearch}>Search</button>
+      <div className="search-icon-btn">
+        <button className="search-icon" onClick={handleSearch}>
+          <SearchOutlinedIcon />
+        </button>
+      </div>
     </div>
   );
 };

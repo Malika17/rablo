@@ -3,8 +3,11 @@ import React from "react";
 
 const Header = () => (
   <header>
-    <h1>Employee Dashboard</h1>
-    <p>View and manage employee data efficiently.</p>
+    <div className="heading-div">
+      <h1 className="heading">Employee Dashboard</h1>
+    </div>
+
+    <p className="desc">View and manage employee data efficiently.</p>
   </header>
 );
 
